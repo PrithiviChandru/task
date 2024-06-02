@@ -50,7 +50,7 @@ public class CountWords {
 
     }
 
-    private static int countDuplicate(String str) {
+    private static int countDuplicateWords(String str) {
         int result = 0;
 
         String[] strArr = str.split(" ");
@@ -81,7 +81,7 @@ public class CountWords {
 
         countEachCharacter("Java J2EE Java JSP J2EE");
 
-        int duplicate = countDuplicate("Super Man Bat Man Spider Man");
+        int duplicate = countDuplicateWords("Super Man Bat Man Spider Man");
         System.out.println("DUPLICATE WORDS COUNT " + duplicate);
     }
 

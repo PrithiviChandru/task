@@ -23,7 +23,7 @@ public class SortMapValue {
 //            }
 //        };
 //        Collections.sort(list, comparator);
-        Collections.sort(list, (o1, o2) -> o1.getValue().compareTo(o2.getValue()));         // lambda expression
+        Collections.sort(list, (o1, o2) -> o1.getKey().compareTo(o2.getKey()));         // lambda expression
 
         Map fMap = new LinkedHashMap();
         for (Map.Entry<String, String> e : list) {
