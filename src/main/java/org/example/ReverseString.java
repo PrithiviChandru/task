@@ -56,6 +56,19 @@ public class ReverseString {
         return sb.toString();
     }
 
+    private static String reverseWords(String s) {
+
+        String[] sArr = s.split(" ");
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = sArr.length - 1; i >= 0; i--) {
+            sb.append(sArr[i]);
+            sb.append(" ");
+        }
+
+        return sb.toString();
+    }
+
     private static String rotationString(String s1, String s2) {
 
         String result = "";
@@ -86,6 +99,9 @@ public class ReverseString {
 
         String reWords = reverseEachWords("Java Concept Of The Day");
         System.out.println("REVERSE STRING EACH WORDS : " + reWords);
+
+        String rWords = reverseWords("Java Concept Of The Day");
+        System.out.println("REVERSE STRING WORDS : " + rWords);
 
         String rotation = rotationString("StrutsHibernateJavaJ2ee", "J2eeStrutsHibernateJava");
         System.out.println(rotation);
