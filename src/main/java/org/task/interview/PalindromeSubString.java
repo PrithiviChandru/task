@@ -1,6 +1,6 @@
 package src.main.java.org.task.interview;
 
-public class Palindrome {
+public class PalindromeSubString {
 
     private int expandAroundCenter(String input, int left, int right) {
 
@@ -37,7 +37,7 @@ public class Palindrome {
 
     public static void main(String[] args) {
 
-        Palindrome palindrome = new Palindrome();
+        PalindromeSubString palindrome = new PalindromeSubString();
 
         String ls = palindrome.longestPalindrome("caba");
         System.out.println("LONGEST SUB STRING " + ls);
