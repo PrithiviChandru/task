@@ -9,17 +9,13 @@ public class Impiger {
 
         char[] sArr = str.replaceAll("\\s", "").toCharArray();
 
-        Map<Character, Integer> map = new HashMap<>();
-        for (int i = 0; i < sArr.length; i++) {
-            char c = sArr[i];
-            if (map.containsKey(c)) map.put(c, map.get(c) + 1);
-            else map.put(c, 1);
+        Set<Character> unique = new HashSet<>();
+        for (char c : sArr) {
+            unique.add(c);
         }
 
-        for (Map.Entry<Character, Integer> m : map.entrySet()) {
-            if (m.getValue() > 1) System.out.println("DUPLICATE " + m.getKey() + " : " + m.getValue());
-        }
-
+        System.out.println("DISTINCT CHAR " + unique);
+        System.out.println("DISTINCT CHAR COUNT " + unique.size());
     }
 
     private static void secondHighest(Integer[] numbers) {
@@ -39,7 +35,7 @@ public class Impiger {
     }
 
     public static void main(String[] args) {
-        distinct("level");
+        distinct("hello world");
 
         Integer[] a = {2, 4, 3, 5, 1};
         secondHighest(a);
