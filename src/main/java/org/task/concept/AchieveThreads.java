@@ -28,7 +28,7 @@ public class AchieveThreads {
         // COUNT BY SYNCHRONIZED
         Counter counter = new Counter();
         Runnable task = () -> {
-            for (int i = 0; i < 1000; i++) {
+            for (int i = 0; i < 100; i++) {
                 counter.increment();
             }
         };
@@ -71,6 +71,7 @@ class Counter {
     private int count = 0;
 
     public synchronized void increment() {
+        System.out.println("called by " + Thread.currentThread().getName());
         count++;
     }
 
