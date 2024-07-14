@@ -7,6 +7,7 @@ public class FindFromTextFile {
 
     private static void count() {
 
+        FileReader fR = null;
         BufferedReader br = null;
 
         try {
@@ -15,7 +16,8 @@ public class FindFromTextFile {
             int wordCount = 0;
             int charCount = 0;
 
-            br = new BufferedReader(new FileReader("D:\\sample.txt"));
+            fR = new FileReader("D:\\new.txt");
+            br = new BufferedReader(fR);
             String rL = br.readLine();
 
             while (rL != null) {
@@ -40,6 +42,7 @@ public class FindFromTextFile {
         } finally {
             try {
                 br.close();
+                fR.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }

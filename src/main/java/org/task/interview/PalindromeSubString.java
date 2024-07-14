@@ -15,7 +15,6 @@ public class PalindromeSubString {
     private String longestPalindrome(String input) {
 
         if (null == input || input.length() < 1) return "";
-
         if (input.length() == 1) return input;
 
         int start = 0;
