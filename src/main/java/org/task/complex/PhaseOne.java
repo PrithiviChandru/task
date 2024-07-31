@@ -3,7 +3,7 @@ package src.main.java.org.task.complex;
 import java.io.*;
 import java.util.HashMap;
 
-public class Complex {
+public class PhaseOne {
 
     public static void main(String[] args) {
 
