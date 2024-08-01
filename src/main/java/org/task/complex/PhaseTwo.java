@@ -12,6 +12,9 @@ public class PhaseTwo {
         System.out.println("********** ARMSTRONG NUMBER **********");
         pT.armstrongNumber(153);
 
+        System.out.println("********** PRIME NUMBER **********");
+        pT.primeNumber(31);
+
     }
 
     /**
@@ -54,6 +57,30 @@ public class PhaseTwo {
 
         if (temp == sum) System.out.println(temp + " IS AN ARMSTRONG NUMBER");
         else System.out.println(temp + " IS NOT AN ARMSTRONG NUMBER");
+
+    }
+
+    /**
+     * input : 31
+     * output : 31 IS A PRIME NUMBER
+     */
+    private void primeNumber(int num) {
+
+        if (num <= 1) {
+            System.out.println(num + " IS A NOT PRIME NUMBER");
+            return;
+        }
+
+        boolean isPrime = true;
+        for (int i = 2; i < num; i++) {
+            if (num % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+
+        if (isPrime) System.out.println(num + " IS A PRIME NUMBER");
+        else System.out.println(num + " IS A NOT PRIME NUMBER");
 
     }
 
