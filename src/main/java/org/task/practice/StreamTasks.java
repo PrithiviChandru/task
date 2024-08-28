@@ -3,8 +3,51 @@ package src.main.java.org.task.practice;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+
+class EmployeeByDeptAndExperience {
+    private String name;
+    private String department;
+    private int experience;
+
+    public EmployeeByDeptAndExperience(String name, String department, int experience) {
+        this.name = name;
+        this.department = department;
+        this.experience = experience;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeByDeptAndExperience{" +
+                "name='" + name + '\'' +
+                ", department='" + department + '\'' +
+                ", experience=" + experience +
+                '}';
+    }
+}
 
 public class StreamTasks extends Object {
 
@@ -41,6 +84,17 @@ public class StreamTasks extends Object {
 
         System.out.println("FIND AGGREGATION OF INTEGER LIST BY STREAMS");
         numbersAggregation(Arrays.asList(10, 20, 30, 40, 50));
+
+        System.out.println("FIND EMPLOYEES COUNT WITH MORE THAN 20 YEARS BY DEPARTMENT");
+        countEmployeeByExp(
+                Arrays.asList(
+                        new EmployeeByDeptAndExperience("John Doe", "HR", 25),
+                        new EmployeeByDeptAndExperience("Jane Smith", "IT", 15),
+                        new EmployeeByDeptAndExperience("Emily Davis", "Finance", 25),
+                        new EmployeeByDeptAndExperience("Michael Brown", "IT", 30),
+                        new EmployeeByDeptAndExperience("James Wilson", "HR", 28)
+                )
+        );
     }
 
     private static void evenNumbers(int[] arr) {
@@ -166,4 +220,11 @@ public class StreamTasks extends Object {
         System.out.println();
     }
 
+    private static void countEmployeeByExp(List<EmployeeByDeptAndExperience> employees) {
+        employees.stream()
+                .filter(e -> e.getExperience() > 20)
+                .collect(Collectors.groupingBy(EmployeeByDeptAndExperience::getDepartment, Collectors.counting()))
+                .forEach((dept, count) -> System.out.println(String.format("Department: %s, Count: %s", dept, count)));
+        System.out.println();
+    }
 }

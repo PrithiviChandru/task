@@ -122,6 +122,30 @@ class EmployeeByGenderAndDept extends EmployeeByAge {
     }
 }
 
+class EmployeeByDept extends EmployeeBySalary {
+    private String department;
+
+    public EmployeeByDept(String name, double salary, String department) {
+        super(name, salary);
+        this.department = department;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeByDept{" +
+                "department='" + department + '\'' +
+                "} " + super.toString();
+    }
+}
+
 public class TaskByStreams {
 
     public static void main(String[] args) {
@@ -188,6 +212,18 @@ public class TaskByStreams {
 
         System.out.println("MAXIMUM LENGTH WORD");
         longestWord("welcome to streamapis");
+
+        System.out.println("AVERAGE SALARY BY EACH DEPARTMENT");
+        avgSalaryByDept(
+                Arrays.asList(
+                        new EmployeeByDept("Alice", 50000, "HR"),
+                        new EmployeeByDept("Bob", 60000, "IT"),
+                        new EmployeeByDept("Charlie", 70000, "HR"),
+                        new EmployeeByDept("David", 75000, "IT"),
+                        new EmployeeByDept("Eve", 80000, "Finance"),
+                        new EmployeeByDept("Frank", 85000, "Finance")
+                )
+        );
     }
 
     private static void firstNonRepeated(List<Integer> numbers) {
@@ -289,6 +325,13 @@ public class TaskByStreams {
                 .max(Comparator.comparingInt(String::length))
                 .orElse(null);
         System.out.println(maxLengthWord);
+        System.out.println();
+    }
+
+    private static void avgSalaryByDept(List<EmployeeByDept> employees) {
+        employees.stream()
+                .collect(Collectors.groupingBy(EmployeeByDept::getDepartment, Collectors.averagingDouble(EmployeeByDept::getSalary)))
+                .forEach((dept, avg) -> System.out.println(String.format("Department: %s, Average Salary: %s", dept, avg)));
         System.out.println();
     }
 }
