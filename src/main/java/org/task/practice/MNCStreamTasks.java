@@ -49,7 +49,7 @@ class EmployeeByDeptAndExperience {
     }
 }
 
-public class StreamTasks extends Object {
+public class MNCStreamTasks extends Object {
 
     public static void main(String[] args) {
         System.out.println("FIND EVEN NUMBERS BY STREAMS");
@@ -94,6 +94,21 @@ public class StreamTasks extends Object {
                         new EmployeeByDeptAndExperience("Michael Brown", "IT", 30),
                         new EmployeeByDeptAndExperience("James Wilson", "HR", 28)
                 )
+        );
+
+        System.out.println("CHECK PRESENT NUMBER IN THE LIST");
+        presentNumber(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8), 5);
+
+        System.out.println("CHECK DIVISIBLE BY THE NUMBERS");
+        divisibleByNumber(Arrays.asList(5, 10, 15, 25), 5);
+
+        System.out.println("GET COMMON ELEMENT IN TWO ARRAYS");
+        commonNumbers(new int[]{1, 2, 3, 4, 5}, new int[]{3, 4, 5, 6, 7});
+
+        System.out.println("GET SUB STRING IN LIST");
+        containSubString(
+                Arrays.asList("Java", "Spring Boot", "MicroServices", "API", "Spring Cloud"),
+                "Spring"
         );
     }
 
@@ -227,4 +242,37 @@ public class StreamTasks extends Object {
                 .forEach((dept, count) -> System.out.println(String.format("Department: %s, Count: %s", dept, count)));
         System.out.println();
     }
+
+    private static void presentNumber(List<Integer> numbers, int present) {
+        boolean isPresent = numbers.stream().anyMatch(num -> num == present);
+        if (isPresent) System.out.println(present + " is present in the list");
+        else System.out.println(present + " is not present in the list");
+        System.out.println();
+    }
+
+    private static void divisibleByNumber(List<Integer> numbers, int div) {
+        boolean divisible = numbers.stream().allMatch(num -> num % div == 0);
+        if (divisible) System.out.println("All the numbers are divisible by " + div);
+        else System.out.println("All the numbers are not divisible by " + div);
+        System.out.println();
+    }
+
+    private static void commonNumbers(int[] a1, int[] a2) {
+        Set<Integer> list1 = Arrays.stream(a1).boxed().collect(Collectors.toSet());
+        Set<Integer> list2 = Arrays.stream(a2).boxed().collect(Collectors.toSet());
+
+        list1.stream()
+                .filter(list2::contains)
+                .forEach(System.out::println);
+        System.out.println();
+    }
+
+    private static void containSubString(List<String> names, String sub) {
+        names.stream()
+                .filter(e -> e.contains(sub))
+                .forEach(System.out::println);
+        System.out.println();
+
+    }
+
 }
