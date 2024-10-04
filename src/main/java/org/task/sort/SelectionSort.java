@@ -1,6 +1,4 @@
 import java.util.*;
-import java.lang.*;
-import java.io.*;
 
 class SelectionSort {
 
@@ -24,12 +22,20 @@ class SelectionSort {
     private static void printArray(int[] a){
         for (int e : a)
             System.out.print(e + " ");
-        System.out.println();
     }
     
     public static void main(String[] args) {
-        int[] a = {7, 5, 2, 9, 4, 1};
-        selectionSort(a,a.length);
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of element: ");
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        
+        for(int x=0; x<n; x++){
+            String input = String.format("Enter the element %d: ", x+1);
+            System.out.print(input);
+            a[x] = sc.nextInt();
+        }
+        selectionSort(a, n);
         printArray(a);
     }
 }
